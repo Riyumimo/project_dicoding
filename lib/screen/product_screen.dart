@@ -10,6 +10,8 @@ class ProductScreen extends StatelessWidget {
     );
   }
 
+  
+
   @override
   Widget build(BuildContext context) {
     var heightScreen = MediaQuery.of(context).size.height;
@@ -53,7 +55,7 @@ class ProductScreen extends StatelessWidget {
               width: widthtScreen * 0.7,
               height: heightScreen * 0.5,
               decoration: BoxDecoration(
-                  color: Colors.amber,
+                  image: DecorationImage(image: NetworkImage('https://images.unsplash.com/photo-1520342868574-5fa3804e551c?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=6ff92caffcdd63681a35134a6770ed3b&auto=format&fit=crop&w=1951&q=80'),fit:BoxFit.cover),
                   borderRadius:
                       BorderRadius.only(bottomLeft: Radius.circular(20))),
             )
