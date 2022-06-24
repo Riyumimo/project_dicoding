@@ -1,5 +1,6 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
+import 'package:project_dicoding/models/product_models.dart';
 
 class HomeScreen extends StatelessWidget {
   HomeScreen({Key? key}) : super(key: key);
@@ -163,7 +164,7 @@ class HomeScreen extends StatelessWidget {
                               aspectRatio: 2.0,
                               initialPage: 2,
                             ),
-                            items: imgList.map((i) {
+                            items: ProductModel.producst.map((i) {
                               return Builder(
                                 builder: (BuildContext context) {
                                   return Container(
@@ -178,7 +179,7 @@ class HomeScreen extends StatelessWidget {
                                       child: ClipRRect(
                                         borderRadius: BorderRadius.circular(12),
                                         child: Image.network(
-                                          i,fit: BoxFit.cover,
+                                          i.imageUrl,fit: BoxFit.cover,
                                           
                                         ),
                                       ));
@@ -206,13 +207,13 @@ class HomeScreen extends StatelessWidget {
             child: Padding(
               padding: const EdgeInsets.only(top: 20,left: 20,right:20 ),
               child: ListView.builder(
-                itemCount: imgList.length,
+                itemCount: ProductModel.producst.length,
                   
                   scrollDirection: Axis.horizontal,
                   shrinkWrap: true,
                   itemBuilder: (context, index) => Padding(
                         padding: const EdgeInsets.all(8.0),
-                        child: cardProduct(img: imgList[index],),
+                        child: cardProduct(productModel: ProductModel.producst[index],),
                       )),
             ),
           )
@@ -243,10 +244,10 @@ class HomeScreen extends StatelessWidget {
 
 class cardProduct extends StatelessWidget {
   const cardProduct({
-    Key? key, required this.img,
+    Key? key, required this.productModel,
   }) : super(key: key);
 
-  final String img;
+  final ProductModel productModel  ;
   @override
   Widget build(BuildContext context) {
     return Stack(children: [
@@ -288,7 +289,7 @@ class cardProduct extends StatelessWidget {
                 child: ClipRRect(
                   borderRadius: BorderRadius.circular(12),
                   child: Image.network(
-                    img,
+                    productModel.imageUrl,
                     fit: BoxFit.cover,
                   ),
                 ),
@@ -301,13 +302,13 @@ class cardProduct extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text(
-                    'Gaming Chair',
+                    productModel.name,
                     style: TextStyle(fontWeight: FontWeight.w700),
                   ),
-                  Text('Gaming',
+                  Text(productModel.category,
                       style:
                           TextStyle(fontWeight: FontWeight.w300, fontSize: 14)),
-                  Text('indonesia',
+                  Text(productModel.color,
                       style:
                           TextStyle(fontWeight: FontWeight.w400, fontSize: 13)),
                   SizedBox(
@@ -318,10 +319,10 @@ class cardProduct extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
                       Icon(Icons.currency_bitcoin),
-                      Text('1.2k'),
+                      Text('\$${productModel.price}'),
                       SizedBox(width: 10),
                       Icon(Icons.star),
-                      Text('4/5'),
+                      Text(productModel.rating),
                     ],
                   )
                 ],
