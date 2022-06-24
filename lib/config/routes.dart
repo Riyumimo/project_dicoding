@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:project_dicoding/models/product_models.dart';
 
 import '../screen/cart_screen.dart';
 import '../screen/catalog_screen.dart';
@@ -19,7 +20,7 @@ class AppRoute {
       case CatalogScreen.routeName:
         return CatalogScreen.route();        
       case ProductScreen.routeName:
-        return ProductScreen.route();  
+        return ProductScreen.route(productModel: settings.arguments as ProductModel);  
       case CartScreen.routeName:
         return CartScreen.route();      
       default: return _errorRoute();

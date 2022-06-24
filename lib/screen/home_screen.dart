@@ -167,22 +167,27 @@ class HomeScreen extends StatelessWidget {
                             items: ProductModel.producst.map((i) {
                               return Builder(
                                 builder: (BuildContext context) {
-                                  return Container(
-                                      width: widthtScreen * 0.5,
-                                      // height: widthtScreen *0.4,
-                                      margin: EdgeInsets.symmetric(
-                                          horizontal: 10.0),
-                                      decoration: BoxDecoration(
-                                          color: Colors.amber,
-                                          borderRadius: BorderRadius.all(
-                                              Radius.circular(12))),
-                                      child: ClipRRect(
-                                        borderRadius: BorderRadius.circular(12),
-                                        child: Image.network(
-                                          i.imageUrl,fit: BoxFit.cover,
-                                          
-                                        ),
-                                      ));
+                                  return GestureDetector(
+                                    onTap: (){
+                                      Navigator.pushNamed(context, '/product',arguments: i);
+                                    },
+                                    child: Container(
+                                        width: widthtScreen * 0.5,
+                                        // height: widthtScreen *0.4,
+                                        margin: EdgeInsets.symmetric(
+                                            horizontal: 10.0),
+                                        decoration: BoxDecoration(
+                                            color: Colors.amber,
+                                            borderRadius: BorderRadius.all(
+                                                Radius.circular(12))),
+                                        child: ClipRRect(
+                                          borderRadius: BorderRadius.circular(12),
+                                          child: Image.network(
+                                            i.imageUrl,fit: BoxFit.cover,
+                                            
+                                          ),
+                                        )),
+                                  );
                                 },
                               );
                             }).toList(),
@@ -258,7 +263,7 @@ class cardProduct extends StatelessWidget {
            shadowColor: Colors.grey.withOpacity(0.1),
            
           child: InkWell(
-            onTap: ()=>Navigator.pushNamed(context, '/product'),
+            onTap: ()=>Navigator.pushNamed(context, '/product',arguments: productModel),
             child: ClipRRect(
              borderRadius: BorderRadius.all(Radius.circular(12)),
               child: Container(

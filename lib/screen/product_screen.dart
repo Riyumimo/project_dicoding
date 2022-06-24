@@ -1,12 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:project_dicoding/models/product_models.dart';
 
 class ProductScreen extends StatelessWidget {
-  const ProductScreen({Key? key}) : super(key: key);
+  ProductModel productModel;
+   ProductScreen(
+    { Key? key, required this.productModel}) : super(key: key);
   static const String routeName = '/product';
-  static Route route() {
+  static Route route({ required ProductModel productModel}){
     return MaterialPageRoute(
-      settings: const RouteSettings(name: routeName),
-      builder: (context) => const ProductScreen(),
+      settings: const RouteSettings(name: routeName ),
+      builder: (context) =>  ProductScreen(
+        productModel:productModel,
+      ),
     );
   }
 
@@ -41,9 +46,9 @@ class ProductScreen extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
-                          category_widget(icon: Icons.animation_outlined, text: "Trending"),
-                          category_widget(icon: Icons.chair_alt_outlined, text: "Gaming"),
-                          category_widget(icon: Icons.gamepad_outlined, text: "Gamers"),
+                          category_widget(icon: Icons.animation_outlined, text: productModel.color),
+                          category_widget(icon: Icons.chair_alt_outlined, text: productModel.category),
+                          category_widget(icon: Icons.gamepad_outlined, text: productModel.weight),
                         ],
                       ),
                     ),
@@ -55,7 +60,7 @@ class ProductScreen extends StatelessWidget {
               width: widthtScreen * 0.7,
               height: heightScreen * 0.5,
               decoration: BoxDecoration(
-                  image: DecorationImage(image: NetworkImage('https://images.unsplash.com/photo-1520342868574-5fa3804e551c?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=6ff92caffcdd63681a35134a6770ed3b&auto=format&fit=crop&w=1951&q=80'),fit:BoxFit.cover),
+                  image: DecorationImage(image: NetworkImage(productModel.imageUrl),fit:BoxFit.cover),
                   borderRadius:
                       BorderRadius.only(bottomLeft: Radius.circular(20))),
             )
@@ -65,7 +70,7 @@ class ProductScreen extends StatelessWidget {
           height: 20,
         ),
         Text(
-          "Gaming Chair",
+          productModel.name,
           style: TextStyle(fontSize: 36 ,fontWeight: FontWeight.bold),
         ),
         Text("Best for Interrios",
@@ -92,12 +97,12 @@ class ProductScreen extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: <Widget>[
                           Text(
-                            "\$67",
+                            "\$${productModel.price}",
                             style: TextStyle(
                                 fontSize: 28, fontWeight: FontWeight.w600),
                           ),
                           Text(
-                            "Rating : 4.8",
+                            "Rating : ${productModel.rating}",
                             style: TextStyle(
                               fontSize: 16,
                             ),
@@ -120,7 +125,7 @@ class ProductScreen extends StatelessWidget {
                             ),
                             Container(
                               child: Text(
-                                "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
+                                productModel.description,
                                 overflow: TextOverflow.ellipsis,
                                 // softWrap: false,
 
