@@ -50,7 +50,7 @@ class CartBloc extends Bloc<CartEvent, CartState> {
          emit(
           CartLoaded(
             cart: Cart(
-              products: List.from(state.cart.products)..add(event.productModel),
+              products: List.from(state.cart.products)..remove(event.productModel),
             ),
           ),
         );

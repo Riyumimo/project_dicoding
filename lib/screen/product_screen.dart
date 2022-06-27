@@ -1,21 +1,20 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:project_dicoding/bloc/cart/cart_bloc.dart';
 import 'package:project_dicoding/models/product_models.dart';
 
 class ProductScreen extends StatelessWidget {
   ProductModel productModel;
-   ProductScreen(
-    { Key? key, required this.productModel}) : super(key: key);
+  ProductScreen({Key? key, required this.productModel}) : super(key: key);
   static const String routeName = '/product';
-  static Route route({ required ProductModel productModel}){
+  static Route route({required ProductModel productModel}) {
     return MaterialPageRoute(
-      settings: const RouteSettings(name: routeName ),
-      builder: (context) =>  ProductScreen(
-        productModel:productModel,
+      settings: const RouteSettings(name: routeName),
+      builder: (context) => ProductScreen(
+        productModel: productModel,
       ),
     );
   }
-
-  
 
   @override
   Widget build(BuildContext context) {
@@ -46,9 +45,15 @@ class ProductScreen extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
-                          category_widget(icon: Icons.animation_outlined, text: productModel.color),
-                          category_widget(icon: Icons.chair_alt_outlined, text: productModel.category),
-                          category_widget(icon: Icons.gamepad_outlined, text: productModel.weight),
+                          category_widget(
+                              icon: Icons.animation_outlined,
+                              text: productModel.color),
+                          category_widget(
+                              icon: Icons.chair_alt_outlined,
+                              text: productModel.category),
+                          category_widget(
+                              icon: Icons.gamepad_outlined,
+                              text: productModel.weight),
                         ],
                       ),
                     ),
@@ -60,7 +65,9 @@ class ProductScreen extends StatelessWidget {
               width: widthtScreen * 0.7,
               height: heightScreen * 0.5,
               decoration: BoxDecoration(
-                  image: DecorationImage(image: NetworkImage(productModel.imageUrl),fit:BoxFit.cover),
+                  image: DecorationImage(
+                      image: NetworkImage(productModel.imageUrl),
+                      fit: BoxFit.cover),
                   borderRadius:
                       BorderRadius.only(bottomLeft: Radius.circular(20))),
             )
@@ -71,10 +78,11 @@ class ProductScreen extends StatelessWidget {
         ),
         Text(
           productModel.name,
-          style: TextStyle(fontSize: 36 ,fontWeight: FontWeight.bold),
+          style: TextStyle(fontSize: 36, fontWeight: FontWeight.bold),
         ),
         Text("Best for Interrios",
-            style: TextStyle(fontSize: 20 ,fontWeight: FontWeight. w400,color: Colors.grey)),
+            style: TextStyle(
+                fontSize: 20, fontWeight: FontWeight.w400, color: Colors.grey)),
         SizedBox(
           height: 20,
         ),
@@ -170,13 +178,20 @@ class ProductScreen extends StatelessWidget {
                         // child: Text("ADD TO CHART"),
                       ),
                       Center(
-                        child: TextButton(
-                            onPressed: () {},
-                            child: Text(
-                              "ADD TO CHART",
-                              style:
-                                  TextStyle(color: Colors.white, fontSize: 24),
-                            )),
+                        child: BlocBuilder<CartBloc, CartState>(
+                          builder: (context, state) {
+                            return TextButton(
+                                onPressed: () {
+                                   context.read<CartBloc>().add(CartProductAdd(productModel));
+                          Navigator.pop(context);
+                                },
+                                child: Text(
+                                  "ADD TO CHART",
+                                  style: TextStyle(
+                                      color: Colors.white, fontSize: 24),
+                                ));
+                          },
+                        ),
                       )
                     ],
                   ),
@@ -194,7 +209,9 @@ class category_widget extends StatelessWidget {
   const category_widget({
     Key? key,
     required this.icon,
-     this.text='', this.height=62, this.width=62,
+    this.text = '',
+    this.height = 62,
+    this.width = 62,
   }) : super(key: key);
 
   final IconData icon;
