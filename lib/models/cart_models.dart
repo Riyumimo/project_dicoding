@@ -28,17 +28,17 @@ class Cart extends Equatable {
   double get subtotal=> products.fold(0, (total, current) => total+current.price);
 
   double deleveryfree(subtotal){
-    if(subtotal>= 100){
+    if(subtotal>= 200){
       return 0.0;
     }
     else{
-      return 4.00;
+      return 10.00;
     }
     
   }
 
   String freeDelevery(subtotal){
-    if(subtotal>= 100){
+    if(subtotal>= 200){
       return ' You Get Free Delevery';
     }else{
       double missing = 4 - this.subtotal;

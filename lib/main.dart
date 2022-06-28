@@ -3,7 +3,9 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:project_dicoding/bloc/cart/cart_bloc.dart';
 import 'package:project_dicoding/config/routes.dart';
 import 'package:project_dicoding/page/my_homepage.dart';
+import 'package:project_dicoding/screen/cart_screen.dart';
 import 'package:project_dicoding/screen/home_screen.dart';
+import 'package:project_dicoding/screen/wishlist_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -25,7 +27,7 @@ class MyApp extends StatelessWidget {
         onGenerateRoute: AppRoute.onGeneratorRoute,
         initialRoute: HomeScreen.routeName,
         debugShowCheckedModeBanner: false,
-        home: MyHomePage(),
+        home:WishListScreen(),
       ),
     );
   }

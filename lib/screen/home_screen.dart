@@ -249,10 +249,11 @@ class HomeScreen extends StatelessWidget {
 
 class cardProduct extends StatelessWidget {
   const cardProduct({
-    Key? key, required this.productModel,
+    Key? key, required this.productModel, this.widthScreen=240,
   }) : super(key: key);
 
-  final ProductModel productModel  ;
+  final ProductModel productModel;
+  final double? widthScreen;
   @override
   Widget build(BuildContext context) {
     return Stack(children: [
@@ -269,7 +270,7 @@ class cardProduct extends StatelessWidget {
               child: Container(
                 // margin: EdgeInsets.only(right: 10),
                 height: 100,
-                width: 240,
+                width: widthScreen,
                 decoration: BoxDecoration(
                   color: Colors.white,
                 ),
