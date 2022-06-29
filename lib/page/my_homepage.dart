@@ -2,6 +2,7 @@ import 'package:convex_bottom_bar/convex_bottom_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:project_dicoding/screen/cart_screen.dart';
 import 'package:project_dicoding/screen/home_screen.dart';
+import 'package:project_dicoding/screen/wishlist_screen.dart';
 
 class MyHomePage extends StatefulWidget {
   const MyHomePage({Key? key}) : super(key: key);
@@ -27,9 +28,7 @@ class _MyHomePageState extends State<MyHomePage> {
           children: [
             HomeScreen(),
             CartScreen(),
-            Container(
-              color: Colors.green,
-            ),
+          WishListScreen(),
             Container(
               color: Colors.blue,
             ),
@@ -53,7 +52,7 @@ class _MyHomePageState extends State<MyHomePage> {
         items: [
           TabItem(icon: Icons.home_filled, title: 'Home'),
           TabItem(icon: Icons.shopping_cart_outlined, title: 'Cart'),
-          TabItem(icon: Icons.heart_broken_outlined, title: 'Wishlish'),
+          TabItem(icon: Icons.favorite, title: 'Wishlish'),
           TabItem(icon: Icons.person, title: 'Profile'),
         ],
       ),

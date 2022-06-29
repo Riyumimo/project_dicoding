@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:project_dicoding/bloc/cart/cart_bloc.dart';
+import 'package:project_dicoding/bloc/wish/wish_bloc.dart';
 import 'package:project_dicoding/config/routes.dart';
 import 'package:project_dicoding/page/my_homepage.dart';
 import 'package:project_dicoding/screen/cart_screen.dart';
@@ -22,12 +23,15 @@ class MyApp extends StatelessWidget {
         BlocProvider(
           create: (context) => CartBloc()..add(LoadCart()),
         ),
+        BlocProvider(
+          create: (context) => WishBloc()..add(StartWishList()),
+        ),
       ],
       child: const MaterialApp(
         onGenerateRoute: AppRoute.onGeneratorRoute,
         initialRoute: HomeScreen.routeName,
         debugShowCheckedModeBanner: false,
-        home:WishListScreen(),
+        home:MyHomePage(),
       ),
     );
   }

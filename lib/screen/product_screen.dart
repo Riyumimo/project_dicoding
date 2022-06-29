@@ -3,6 +3,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:project_dicoding/bloc/cart/cart_bloc.dart';
 import 'package:project_dicoding/models/product_models.dart';
 
+import '../bloc/wish/wish_bloc.dart';
+
 class ProductScreen extends StatelessWidget {
   ProductModel productModel;
   ProductScreen({Key? key, required this.productModel}) : super(key: key);
@@ -88,6 +90,8 @@ class ProductScreen extends StatelessWidget {
         ),
         Expanded(
           child: Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Container(
                 height: double.infinity,
@@ -148,6 +152,36 @@ class ProductScreen extends StatelessWidget {
                   ),
                 ),
               ),
+              Container(
+                decoration:
+                    BoxDecoration(borderRadius: BorderRadius.circular(12)),
+                child: Material(
+                  elevation: 1,
+                  borderRadius: BorderRadius.circular(12),
+                  child: BlocBuilder<WishBloc, WishState>(
+                    builder: (context, state) {
+                      return InkWell(
+                        borderRadius: BorderRadius.circular(12),
+                        onTap: () {
+                          Navigator.pop(context);
+                          context
+                              .read<WishBloc>()
+                              .add(AddtWishList(productModel));
+                        },
+                        child: Container(
+                            height: 48,
+                            width: 48,
+                            decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(12)),
+                            child: Icon(Icons.favorite)),
+                      );
+                    },
+                  ),
+                ),
+              ),
+              SizedBox(
+                width: 10,
+              )
             ],
           ),
         ),
@@ -182,8 +216,10 @@ class ProductScreen extends StatelessWidget {
                           builder: (context, state) {
                             return TextButton(
                                 onPressed: () {
-                                   context.read<CartBloc>().add(CartProductAdd(productModel));
-                          Navigator.pop(context);
+                                  context
+                                      .read<CartBloc>()
+                                      .add(CartProductAdd(productModel));
+                                  Navigator.pop(context);
                                 },
                                 child: Text(
                                   "ADD TO CHART",

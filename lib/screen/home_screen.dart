@@ -1,6 +1,10 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:project_dicoding/models/product_models.dart';
+
+import '../bloc/wish/wish_bloc.dart';
+import '../widgets/product_card.dart';
 
 class HomeScreen extends StatelessWidget {
   HomeScreen({Key? key}) : super(key: key);
@@ -247,96 +251,4 @@ class HomeScreen extends StatelessWidget {
   }
 }
 
-class cardProduct extends StatelessWidget {
-  const cardProduct({
-    Key? key, required this.productModel, this.widthScreen=240,
-  }) : super(key: key);
 
-  final ProductModel productModel;
-  final double? widthScreen;
-  @override
-  Widget build(BuildContext context) {
-    return Stack(children: [
-      Container(
-        child: Material(
-           borderRadius: BorderRadius.all(Radius.circular(12)),
-           elevation: 10,
-           shadowColor: Colors.grey.withOpacity(0.1),
-           
-          child: InkWell(
-            onTap: ()=>Navigator.pushNamed(context, '/product',arguments: productModel),
-            child: ClipRRect(
-             borderRadius: BorderRadius.all(Radius.circular(12)),
-              child: Container(
-                // margin: EdgeInsets.only(right: 10),
-                height: 100,
-                width: widthScreen,
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                ),
-              ),
-            ),
-          ),
-        ),
-      ),
-      Positioned(
-        top: 0,
-        left: 0,
-        child: Row(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            ClipRRect(
-              borderRadius: BorderRadius.all(Radius.circular(12)),
-              child: Container(
-                padding: EdgeInsets.all(6),
-                width: 85,
-                height: 100,
-                color: Colors.white,
-                child: ClipRRect(
-                  borderRadius: BorderRadius.circular(12),
-                  child: Image.network(
-                    productModel.imageUrl,
-                    fit: BoxFit.cover,
-                  ),
-                ),
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.all(8),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Text(
-                    productModel.name,
-                    style: TextStyle(fontWeight: FontWeight.w700),
-                  ),
-                  Text(productModel.category,
-                      style:
-                          TextStyle(fontWeight: FontWeight.w300, fontSize: 14)),
-                  Text(productModel.color,
-                      style:
-                          TextStyle(fontWeight: FontWeight.w400, fontSize: 13)),
-                  SizedBox(
-                    height: 10,
-                  ),
-                  Row(
-                    // crossAxisAlignment: CrossAxisAlignment.start,
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    children: [
-                      Icon(Icons.currency_bitcoin),
-                      Text('\$${productModel.price}'),
-                      SizedBox(width: 10),
-                      Icon(Icons.star),
-                      Text(productModel.rating),
-                    ],
-                  )
-                ],
-              ),
-            ),
-          ],
-        ),
-      )
-    ]);
-  }
-}
