@@ -61,7 +61,9 @@ class HomeScreen extends StatelessWidget {
                                   style: const TextStyle(
                                       color: Colors.white, fontSize: 14),
                                 ),
-                                onPressed: () {},
+                                onPressed: () {
+                                  Navigator.pushNamed(context, '/recomendation');
+                                },
                               ),
                             ),
                             RotatedBox(
@@ -72,7 +74,9 @@ class HomeScreen extends StatelessWidget {
                                   style: TextStyle(
                                       color: Colors.white, fontSize: 14),
                                 ),
-                                onPressed: () {},
+                                onPressed: () {
+                                  Navigator.pushNamed(context, '/trending');
+                                },
                               ),
                             ),
                             RotatedBox(
@@ -217,7 +221,6 @@ class HomeScreen extends StatelessWidget {
               padding: const EdgeInsets.only(top: 20,left: 20,right:20 ),
               child: ListView.builder(
                 itemCount: ProductModel.producst.length,
-                  
                   scrollDirection: Axis.horizontal,
                   shrinkWrap: true,
                   itemBuilder: (context, index) => Padding(
@@ -226,25 +229,6 @@ class HomeScreen extends StatelessWidget {
                       )),
             ),
           )
-
-          // Flexible(
-          //   child: SizedBox(
-          //     height: 20,
-          //     child: ListView.builder(
-          //       itemCount: 10,
-          //       scrollDirection: Axis.horizontal,
-          //       itemBuilder: (BuildContext context, int index) {
-          //         return Container(
-          //           margin: EdgeInsets.only(left: 10 ,bottom: 10),
-          //           width: 100,
-          //           height: 20,
-          //           decoration: BoxDecoration(color: Colors.amber),
-          //           child: Text("$index"),
-          //         );
-          //       },
-          //     ),
-          //   ),
-          // ),
         ],
       ),
     );

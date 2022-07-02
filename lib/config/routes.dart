@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:project_dicoding/models/product_models.dart';
+import 'package:project_dicoding/screen/recomendation_screen.dart';
+import 'package:project_dicoding/screen/trending_screen.dart';
 
 import '../screen/cart_screen.dart';
 import '../screen/catalog_screen.dart';
@@ -23,6 +25,10 @@ class AppRoute {
         return ProductScreen.route(productModel: settings.arguments as ProductModel);  
       case CartScreen.routeName:
         return CartScreen.route();      
+      case TrendingScreen.routeName:
+        return TrendingScreen.route();      
+      case RecomendationScreen.routeName:
+        return RecomendationScreen.route();      
       default: return _errorRoute();
     }
 

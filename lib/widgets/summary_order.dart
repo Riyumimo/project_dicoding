@@ -73,6 +73,7 @@ class SummaryOrder extends StatelessWidget {
                 Container(
                     width: widthscreen,
                     child: ElevatedButton(
+                      style: ButtonStyle(backgroundColor: MaterialStateProperty.all(Colors.black87)),
                         onPressed: () {}, child: Text("CHECKOUT ('\$${state.cart.totalString}')")))
               ],
             ),

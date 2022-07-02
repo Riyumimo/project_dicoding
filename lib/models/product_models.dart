@@ -74,7 +74,7 @@ class ProductModel extends Equatable {
         name: "Black Metal Lounge Chair",
         category: "Chair",
         imageUrl: "https://images.unsplash.com/photo-1606744824163-985d376605aa?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1032&q=80",
-        isRecomended: true,
+        isRecomended: false,
         isPopular: true,
         price: 150,
         description: "Kursi ini sangat cocok ditempatkan di teras karena fungsinya yang biasa digunakan untuk bersantai.Kunci kenyamanan dari kursi ini adalah desain sandarannya yang dibuat lebih ke belakang serta dudukan yang lebih rendah, bisa digunakan untuk rebahan."
@@ -87,8 +87,8 @@ class ProductModel extends Equatable {
         name: "Grey Arm Chair",
         category: "Chair",
         imageUrl: "https://images.unsplash.com/photo-1509764866569-93cd1fc07dc4?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80",
-        isRecomended: true,
-        isPopular: true,
+        isRecomended: false,
+        isPopular: false,
         price: 70,
         description: "Jenis kursi yang dilengkapi dengan sandaran tangan ini sangat umum ditemukan di dalam rumah.Desainnya yang simpel dan nyaman untuk digunakan membuat kursi ini cocok untuk ditempatkan di ruang tamu, ruang makan, atau bahkan ruang kerja."
         ),
@@ -100,7 +100,7 @@ class ProductModel extends Equatable {
         name: "Chaise Lounge",
         category: "Sofa",
         imageUrl: "https://blogpictures.99.co/jenis-kursi-chaise-chair.jpg",
-        isRecomended: true,
+        isRecomended: false,
         isPopular: true,
         price: 50,
         description: "Kursi yang satu ini tidak memiliki bentuk yang sangat berbeda dengan kursi biasa.Desainnya yang unik ternyata dimaksudkan untuk menambah kenyamanan tubuh ketika bersandar di kursi.Saking nikmatnya, kamu bisa sampai tertidur dengan pulas lo di kursi seperti ini."
